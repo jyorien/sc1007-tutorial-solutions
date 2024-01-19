@@ -35,6 +35,23 @@ void printList(Node *head)
     }
 }
 
+int searchList(Node *head, int valueToFind)
+{
+    int index = 0;
+    Node *temp = head;
+
+    while (temp->nextNode != NULL)
+    {
+        if (temp->value == valueToFind)
+        {
+            return index;
+        }
+        temp = temp->nextNode;
+        index += 1;
+    }
+    return -1;
+}
+
 int main()
 {
     Node *head = createNode(0);
@@ -43,10 +60,23 @@ int main()
     while (1)
     {
         scanf("%d", &res);
-        if (res == -1) break;
+        if (res == -1)
+            break;
         Node *newNode = createNode(res);
         insertNodeAtEnd(&head, newNode);
     }
 
     printList(head->nextNode);
+    printf("\n");
+
+    int valueToSearch;
+    printf("Enter value to search for: ");
+    scanf("%d", &valueToSearch);
+    int index = searchList(head->nextNode, valueToSearch);
+    if (index != -1) {
+        printf("Value %d found at %d", valueToSearch, index);
+    } else {
+        printf("Value not found in list");
+    }
+
 }
