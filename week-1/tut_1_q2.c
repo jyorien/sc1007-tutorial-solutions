@@ -74,9 +74,20 @@ int main()
     scanf("%d", &valueToSearch);
     int index = searchList(head->nextNode, valueToSearch);
     if (index != -1) {
-        printf("Value %d found at %d", valueToSearch, index);
+        printf("Value %d found at %d\n", valueToSearch, index);
     } else {
-        printf("Value not found in list");
+        printf("Value not found in list\n");
     }
+
+    // free the linked list
+    while (head != NULL) {
+        Node *temp = head;
+        head = head->nextNode;
+        free(temp);
+    }
+    if (head == NULL) {
+        printf("cleared");
+    }
+
 
 }
