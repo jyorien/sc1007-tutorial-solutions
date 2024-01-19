@@ -1,6 +1,5 @@
 .gitattributes
 *.dSYM
-*.out
-*.o
+out
 .vscode
 .DS_Store
